@@ -3,15 +3,19 @@ import {
   AcademicSemesterModel,
   IAcademicSemester,
 } from './academicSemester.interface';
-import { academicSemesterMonths } from './academicSemester.constant';
+import {
+  academicSemesterCode,
+  academicSemesterMonths,
+  academicSemesterTitle,
+} from './academicSemester.constant';
 import ApiError from '../../../errors/ApiErrors';
 import status from 'http-status';
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
-    title: { type: String, required: true, enum: ['Autumn', 'Summer', 'Fall'] },
-    year: { type: Number, required: true },
-    code: { type: String, required: true, enum: ['01', '02', '03'] },
+    title: { type: String, required: true, enum: academicSemesterTitle },
+    year: { type: String, required: true },
+    code: { type: String, required: true, enum: academicSemesterCode },
     startMonth: { type: String, required: true, enum: academicSemesterMonths },
     endMonth: { type: String, required: true, enum: academicSemesterMonths },
   },
